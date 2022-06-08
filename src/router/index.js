@@ -52,11 +52,11 @@ const routes = [
     beforeEnter: noRequireAuth
   },
   {
-   path: '/chatroom',
-   name: 'Chatroom',
-   component: ChatroomPage,
-   beforeEnter: requireAuth
- }
+    path: '/chatroom',
+    name: 'Chatroom',
+    component: ChatroomPage,
+    beforeEnter: requireAuth
+  }
 ]
 
 const router = createRouter({

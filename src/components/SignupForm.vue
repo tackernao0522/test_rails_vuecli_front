@@ -2,10 +2,27 @@
   <div>
     <h2>アカウントを登録</h2>
     <form @submit.prevent="signUp">
-      <input type="text" required placeholder="名前" v-model="name">
-      <input type="email" required placeholder="メールアドレス" v-model="email">
-      <input type="password" required placeholder="パスワード" v-model="password">
-      <input type="password" required placeholder="パスワード（確認用）" v-model="passwordConfirmation">
+      <input type="text" required placeholder="名前" v-model="name" />
+      <input
+        type="email"
+        required
+        placeholder="メールアドレス"
+        v-model="email"
+      />
+      <input
+        type="password"
+        required
+        placeholder="パスワード"
+        autocomplete="off"
+        v-model="password"
+      />
+      <input
+        type="password"
+        required
+        placeholder="パスワード(確認用)"
+        autocomplete="off"
+        v-model="passwordConfirmation"
+      />
       <div class="error">{{ error }}</div>
       <button>登録する</button>
     </form>
@@ -13,43 +30,43 @@
 </template>
 
 <script>
-import axios from 'axios'
-import setItem from '../auth/setItem'
+import axios from "../api/index";
+import setItem from "../auth/setItem";
 export default {
-  emits: ['redirectToChatRoom'],
-  data () {
+  emits: ["redirectToChatRoom"],
+  data() {
     return {
-      name: '',
-      email: '',
-      password: '',
-      passwordConfirmation: '',
-      error: null
-    }
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+      error: null,
+    };
   },
   methods: {
-    async signUp () {
-      this.error = null
+    async signUp() {
+      this.error = null;
       try {
-        const res = await axios.post('http://localhost:3000/auth', {
+        const res = await axios().post("/auth", {
           name: this.name,
           email: this.email,
           password: this.password,
-          password_confirmation: this.passwordConfirmation
-          }
-        )
+          password_confirmation: this.passwordConfirmation,
+        });
         if (!res) {
-          throw new Error('アカウントを登録できませんでした')
+          throw new Error("アカウントを登録できませんでした");
         }
         if (!this.error) {
-          setItem(res.headers, res.data.data.name)
-          this.$emit('redirectToChatRoom')
+          setItem(res.headers, res.data.data.name);
+          this.$emit("redirectToChatRoom");
         }
-        console.log({ res })
-        return res
+        // eslint-disable-next-line no-console
+        console.log({ res });
+        return res;
       } catch (error) {
-        this.error = 'アカウントを登録できませんでした'
+        this.error = "アカウントを登録できませんでした";
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
