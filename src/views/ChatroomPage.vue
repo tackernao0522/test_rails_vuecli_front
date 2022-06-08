@@ -20,7 +20,7 @@ import ChatWindow from '../components/ChatWindow.vue';
 import NewChatForm from '../components/NewChatForm.vue';
 
 export default {
-  components: { ChatWindow, NewChatForm, NavbarPage, NewChatForm, ChatWindow },
+  components: { ChatWindow, NewChatForm, NavbarPage },
   data() {
     return {
       messages: [],
