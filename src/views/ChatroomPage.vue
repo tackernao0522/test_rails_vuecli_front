@@ -1,26 +1,26 @@
 <template>
   <div class="container">
     <navbar-page />
-    <ChatWindow
+    <chat-window
       @connectCable="connectCable"
       :messages="formattedMessages"
       ref="chatWindow"
     />
-    <NewChatForm @connectCable="connectCable" />
+    <new-chat-form @connectCable="connectCable" />
   </div>
 </template>
 
 <script>
 import axios from "../api/index";
 import ActionCable from "actioncable";
-import ChatWindow from "../components/ChatWindow.vue";
-import NewChatForm from "../components/NewChatForm.vue";
 import { formatDistanceToNow } from "date-fns";
 import { ja } from "date-fns/locale";
 import NavbarPage from '../components/NavbarPage.vue';
+import ChatWindow from '../components/ChatWindow.vue';
+import NewChatForm from '../components/NewChatForm.vue';
 
 export default {
-  components: { ChatWindow, NewChatForm, NavbarPage },
+  components: { ChatWindow, NewChatForm, NavbarPage, NewChatForm, ChatWindow },
   data() {
     return {
       messages: [],
