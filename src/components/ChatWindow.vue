@@ -5,7 +5,7 @@
         <li
           :class="{
             received: message.email !== uid,
-            sent: message.email === uid,
+            sent: message.email == uid,
           }"
         >
           <span class="name">{{ message.name }}</span>
