@@ -58,6 +58,7 @@ export default {
             },
           }
         );
+
         if (!res) {
           new Error("いいねできませんでした");
         }
@@ -76,6 +77,7 @@ export default {
             client: window.localStorage.getItem("client"),
           },
         });
+
         if (!res) {
           new Error("いいねを削除できませんでした");
         }
@@ -148,6 +150,7 @@ ul li {
   max-height: 400px;
   overflow: auto;
 }
+
 .message {
   position: relative;
 }
