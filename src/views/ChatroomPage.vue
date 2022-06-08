@@ -81,7 +81,7 @@ export default {
       });
     } else {
       const cable = ActionCable.createConsumer(
-        "wss://rails-vue3cli-api.herokuapp.com/cable"
+        "wss://test-chatapp-api.herokuapp.com/cable"
       );
       this.messageChannel = cable.subscriptions.create("RoomChannel", {
         connected: () => {
